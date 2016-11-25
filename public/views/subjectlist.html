@@ -1,10 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<br>
+<br>
+<div class="col-md-2"></div>
+<div class="col-md-8">
+<div class="subjects-panel row" ng-controller="subjectlistCtrl">
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Nueva asignatura</div>
+        <div class="panel-body">
+            <div class="col-sm-2">
+                <label>Nombre:</label>
+                <input class="form-control" id="ex1" type="text" ng-model="NewSubject.name" required>
+            </div>
+            <div class="col-sm-2">
+                <label>Epoca:</label>
+                <input class="form-control" id="ex2" type="text" ng-model="NewSubject.when" required>
+            </div>
+            <br>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-success btn-block" ng-click="CreateSubject()"  ng-disabled="!NewSubject.name || !NewSubject.when">Nuevo</button>
+            </div>
+        </div>
+        <br><br>
+    </div>
 
-</body>
-</html>
+    <br>
+    <div class="col-sm-3">
+    <input type="text" class="form-control InputStyle" size="60" placeholder="Filtra las asignaturas"
+           ng-model="search.$" required>
+    </div>
+    <div class="col-sm-3">
+        <span class="input-group" ng-model="search.when" id="order-radiobutton">
+            <input type="radio" value="QP" ng-model="search.when">QP</input>
+            <div class="col-sm-1"></div>
+            <input type="radio" value="QT" ng-model="search.when">QT</input>
+            <div class="col-sm-1"></div>
+            <input type="radio" ng-click="getTodas()" ng-model="search.when">Todas</input>
+        </span>
+    </div>
+<!-- Table -->
+    <br><br>
+    <br><br>
+<p><table class="table">
+        <tr class="info">
+            <td>Nombre</td>
+            <td>Epoca</td>
+            <td>#Matriculados</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr ng-repeat="subject in subjects | filter:search | orderBy:'name'">
+            <td>{{subject.name}}</td>
+            <td>{{subject.when}}</td>
+            <td>{{subject.students.length}}</td>
+            <td><a class="btn btn-info" ng-href="#/subjectprofile/{{subject._id}}">Ver asignatura</a></td>
+            <td><button class="btn btn-danger" ng-click="DeleteSubject(subject._id)">Eliminar asignatura</button></td>
+        </tr>
+    </table>
+</div>
+</div></p>

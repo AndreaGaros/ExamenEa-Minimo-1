@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<br>
+<br>
+<div class="info col-md-5">
+    <div class="panel panel-info PersonalPanel">
+        <div class="panel-heading">
+            <div class=panel-title"><h4><b>Información de la asignatura:</b></h4></div>
+        </div>
+        <div class="panel-body">
+            <h4><b> Nombre:</b> {{subject.name}}</h4>
+            <h4><b> Estudiantes matriculados:</b></h4>
+            <table class="table">
+                <tr ng-repeat="subjectstudent in subjectstudents | orderBy:'name'">
+                    <td>{{subjectstudent.name}}</td>
+                    <td><a class="btn btn-info" ng-href="#/studentprofile/{{subjectstudent._id}}">Ver estudiante</a></td>
+                    <td><button class="btn btn-warning" ng-click="Popstudent(subjectstudent._id)">Desmatricular</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-md-2"></div>
+<div class="col-lg-5">
+    <div class="panel panel-info PersonalPanel">
+        <div class="panel-heading">
+            <div class=panel-title"><h4><b>Lista de estudiantes:</b></h4></div>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <tr ng-repeat="student in students | orderBy:'name'">
+                    <td>{{student.name}}</td>
+                    <td><button class="btn btn-success" ng-click="Addstudent(student._id)">Matricular</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-</body>
-</html>
+</div>

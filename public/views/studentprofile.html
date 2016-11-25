@@ -1,19 +1,45 @@
 <!-- Table -->
+<br><br>
+<div class="col-md-1"></div>
+<div class="col-md-3">
 <table class="table">
     <tr class="info">
         <td>Nombre</td>
-        <td>Drección</td>
-        <td>Contacto</td>
-        <td>Numero</td>
-        <td>Acciones</td>
+        <td>Dirección</td>
         <td></td>
     </tr>
-    <tr ng-repeat="student in students | orderBy:'name'">
+    <tr class="">
         <td>{{student.name}}</td>
         <td>{{student.address}}</td>
-        <td>{{student.phone[0].contact}}</td>
-        <td>{{student.phone[0].number}}</td>
-        <td><button class="btn btn-info" ng-href="#/strudentprofile/{{student._id}}">Ver estudiante</button></td>
-        <td><button class="btn btn-danger" ng-click="DeleteStudent(student._id)">Eliminar</button></td>
     </tr>
 </table>
+</div>
+<div class="col-md-3">
+<table class="table">
+    <tr class="phones">
+        <td>Tipo</td>
+        <td>Numero</td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="phone in phones">
+
+        <td>{{phone.cont}}</td>
+        <td>{{phone.number}}</td>
+        <td><a class="btn btn-danger" ng-click="DeletePhn(phone._id)">Eliminar</a></td>
+    </tr>
+</table>
+</div>
+<div class="col-md-5">
+    <div class="col-sm-4">
+        <label>Tipo de telefono:</label>
+        <input class="form-control" id="ex1" type="text" ng-model="phone.cont" required>
+    </div>
+    <div class="col-sm-4">
+        <label>Numero:</label>
+        <input class="form-control" id="ex2" type="text" ng-model="phone.number" required>
+    </div>
+    <div class="col-sm-4"><br>
+    <button type="button" class="btn btn-success btn-block" ng-click="AddPhn()">New Phone</button>
+    </div>
+</div>
+<div class="col-md-1"></div>

@@ -1,0 +1,27 @@
+{
+  "name": "examen_ea",
+  "version": "1.0.0",
+  "description": "Entrega minimos",
+  "main": "app.js",
+  "bin": {
+    "examen_ea": "database.js"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Andrea Garos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "~1.15.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "jade": "~1.11.0",
+    "mongoose": "^4.6.3",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.0",
+    "forever": "~0.15.2"
+  }
+}

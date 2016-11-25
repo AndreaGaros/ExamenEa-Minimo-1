@@ -3,17 +3,18 @@
  */
 
 var mongoose = require('mongoose');
-Schema   = mongoose.Schema;
 
-// define the schema for our user model
-var SubjectSchema = new Schema({
+var Subjects = new mongoose.Schema({
 
     name: {
-        type: String,
+        type: String
     },
-    adventures: [
+    when:{
+        type: String
+    },
+    students: [
         {type: mongoose.Schema.Types.ObjectId, ref: 'Students' }
     ]
 });
 
-var Subject = module.exports = mongoose.model('Subject', SubjectSchema);
+module.exports = mongoose.model('Subjects', Subjects);

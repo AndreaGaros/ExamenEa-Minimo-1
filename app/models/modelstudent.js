@@ -5,23 +5,28 @@
  * Created by tonim on 14/10/2016.
  */
 var mongoose = require('mongoose');
-Schema   = mongoose.Schema;
 
-// define the schema for our user model
-var StudentSchema = new Schema({
+var Students = new mongoose.Schema({
 
     name: {
-        type: String,
+        type: String
     },
 
     address: {
         type: String
     },
+    
 
-    phone: [{
-        home: String,
-        work: String
-    }]
+    phones: [
+        {
+            cont: {
+                type: String
+            },
+            number:{
+                type: String
+            }
+        }
+    ]
 });
 
-var Student = module.exports = mongoose.model('Student', StudentSchema);
+module.exports = mongoose.model('Students', Students);
