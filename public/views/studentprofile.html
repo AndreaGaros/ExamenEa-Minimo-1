@@ -1,0 +1,19 @@
+<!-- Table -->
+<table class="table">
+    <tr class="info">
+        <td>Nombre</td>
+        <td>Drección</td>
+        <td>Contacto</td>
+        <td>Numero</td>
+        <td>Acciones</td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="student in students | orderBy:'name'">
+        <td>{{student.name}}</td>
+        <td>{{student.address}}</td>
+        <td>{{student.phone[0].contact}}</td>
+        <td>{{student.phone[0].number}}</td>
+        <td><button class="btn btn-info" ng-href="#/strudentprofile/{{student._id}}">Ver estudiante</button></td>
+        <td><button class="btn btn-danger" ng-click="DeleteStudent(student._id)">Eliminar</button></td>
+    </tr>
+</table>
