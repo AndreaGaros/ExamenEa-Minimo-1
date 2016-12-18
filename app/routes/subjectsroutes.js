@@ -73,6 +73,17 @@ router.delete('/removesubject/:sub_id', function(req, res) {
     });
 });
 
+router.get('/when/:when', function(req, res) {
+    console.log(req.params.when);
+    Subjects.find({when: req.params.when}, function (err, exsistingsubjects) {
+        if(exsistingsubjects){
+            res.send(exsistingsubjects);
+        }
+        else{
+            res.status(400).send(err);
+        }
+    });
+});
 
 
 router.post('/addstudent/:sub_id', function(req, res) {
