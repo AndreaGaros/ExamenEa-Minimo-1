@@ -15,8 +15,11 @@ var Students = new mongoose.Schema({
     address: {
         type: String
     },
-    
 
+    subjects: [
+        {type: mongoose.Schema.Types.ObjectId, ref: 'Subjects' }
+    ],
+   
     phones: [
         {
             cont: {

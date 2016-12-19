@@ -6,6 +6,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var Subjects = require('../models/modelsubject');
+var Students = require('../models/modelstudent');
 var router = express.Router();
 
 router.post('/createsubject', function(req, res) {
@@ -96,15 +97,25 @@ router.post('/addstudent/:sub_id', function(req, res) {
             res.send(err);
         }
         if(subject){
-            Subjects.findById(subject._id).populate('students').exec().then(function(err, subject) {
-                if (err)
-                    res.send(err)
-                if (subject)
-                    res.send(subject);
+            var query = {_id: req.body.student_id};
+            var update = {$addToSet : {"subjects" : req.params.sub_id }};
+            var options = {};
+            Students.findOneAndUpdate(query, update, options, function(err, student) {
+                if (err) {
+                    res.send(err);
+                }
+                if(student){
+                    Subjects.findById(subject._id).populate('students').exec().then(function(err, subject) {
+                        if (err)
+                            res.send(err)
+                        res.send(subject);
+                    });
+                }
             });
         }
     });
 });
+
 
 
 router.delete('/deletestudent/:sub_id/:student_id', function(req, res) {
@@ -125,6 +136,7 @@ router.delete('/deletestudent/:sub_id/:student_id', function(req, res) {
         }
     });
 });
+
 
 
 module.exports = router;

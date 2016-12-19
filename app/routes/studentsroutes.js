@@ -7,6 +7,7 @@ var Students = require('../models/modelstudent');
 
 
 
+
 // GET adventures in list
 router.get('/', function(req, res) {
 
@@ -20,9 +21,10 @@ router.get('/', function(req, res) {
 
 });
 
+/////NUEVO
 // GET adventure by ID
 router.get('/id/:stu_id', function(req, res){
-    Students.findById(req.params.stu_id, function(err, student){
+    Students.findById(req.params.stu_id).populate('subjects').exec().then( function(err, student){
         if(err)
             res.send(err)
         if(student)
@@ -31,6 +33,9 @@ router.get('/id/:stu_id', function(req, res){
             res.send(student);
     });
 });
+
+
+
 
 // Create an Adventure
 router.post('/createstudent', function(req, res) {
