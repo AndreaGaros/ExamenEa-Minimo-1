@@ -41,11 +41,7 @@ router.post('/createstudent', function(req, res) {
     Students.create({
         name:req.body.name,
         address:req.body.address,
-        phones: {
-            cont: req.body.cont,
-            number: req.body.number
-        }
-
+       
     }, function(err, stu) {
         if (err)
             res.send(err);
